@@ -55,6 +55,12 @@ def next_question():
 # Title and description
 st.title("Streamlit Quiz App")
 
+# EDIT
+# Add input form for NAME
+with st.form(key='my_form'):
+    name_input = st.text_input(label='Name')
+    submit_button = st.form_submit_button(label='Submit')
+
 # Progress bar
 progress_bar_value = (st.session_state.current_index + 1) / len(quiz_data)
 st.metric(label="Score", value=f"{st.session_state.score} / {len(quiz_data) * 10}")
