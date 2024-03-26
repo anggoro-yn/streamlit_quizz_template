@@ -103,6 +103,14 @@ if st.session_state.answer_submitted:
     else:
         st.write(st.session_state.name)
         st.write(f"Quiz completed! {st.session_state.name} Your score is: {st.session_state.score} / {len(quiz_data) * 10}")
+
+        # Button to write input to a text file
+        if st.button('Save to text file'):
+            # Write the input to a text file
+            with open('user_input.txt', 'w') as f:
+                f.write(st.session_state.name)
+                st.success('File saved successfully!')
+       
         if st.button('Restart', on_click=restart_quiz):
             pass
 else:
