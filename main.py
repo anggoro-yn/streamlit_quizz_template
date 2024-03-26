@@ -20,7 +20,7 @@ div.stButton > button:first-child {
 """, unsafe_allow_html=True)
 
 # Initialize session variables if they do not exist
-default_values = {'current_index': 0, 'current_question': 0, 'score': 0, 'selected_option': None, 'answer_submitted': False}
+default_values = {'current_index': 0, 'current_question': 0, 'score': 0, 'selected_option': None, 'answer_submitted': False, 'name': ''}
 for key, value in default_values.items():
     st.session_state.setdefault(key, value)
 
@@ -59,6 +59,9 @@ st.title("Streamlit Quiz App")
 # Add input form for NAME
 with st.form(key='my_form'):
     name_input = st.text_input(label='Name')
+    st.form_submit_button(label='Submit')
+if submit_button:
+    st.session_state.name = name_input
 
 # Progress bar
 progress_bar_value = (st.session_state.current_index + 1) / len(quiz_data)
